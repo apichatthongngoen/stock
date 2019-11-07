@@ -24,12 +24,12 @@ require_once('inc/dbconnect.php');
 
         <div class="row justify-content-md-center">
             <div class="col-md-auto center">
-                <form id="form1" name="form1" method="post" action="inc/fn.php"> 
+                <form id="form1" name="form1" method="post" action=""> 
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">พิมพ์ชื่อพัสดุ</span>
                         </div>
-                    <input type="text" size="50" a class="form-control" name="show_province" id="show_province" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+                    <input type="text" size="50" class="form-control" name="show_province" id="show_province" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
                     <input class="form-control" name="h_province_id" type="hidden" id="h_province_id" value="" />
                     </div>
                     <div class="input-group input-group-sm mb-3">
@@ -38,9 +38,11 @@ require_once('inc/dbconnect.php');
                         </div>
                         <input class="form-control" type="number" id="number" name="number" placeholder="0-99" value="" />
                     </div>
+
                     <div class="form-group">
                         <button type="button" class="btn btn-primary">เบิกพัสดุ</button>
                     </div>
+
                 </form>
             </div>
         </div>
