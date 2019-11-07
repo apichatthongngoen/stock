@@ -1,9 +1,9 @@
 <?php
-require_once('inc/dbconnect.php');
+require_once 'inc/dbconnect.php';
 
 ?>
 
-  
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -18,13 +18,13 @@ require_once('inc/dbconnect.php');
   </head>
   <body>
     <div class="container">
-        <div class="row justify-content-md-center">
+                   <div class="row justify-content-md-center">
             <h3>เบิกพัสดุ</h3>
         </div>
 
         <div class="row justify-content-md-center">
             <div class="col-md-auto center">
-                <form id="form1" name="form1" method="post" action=""> 
+                <form id="form1" name="form1" method="post" action="">
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">พิมพ์ชื่อพัสดุ</span>
@@ -51,25 +51,25 @@ require_once('inc/dbconnect.php');
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script type="text/javascript">
         function make_autocom(autoObj,showObj){
-            var mkAutoObj=autoObj; 
-            var mkSerValObj=showObj; 
+            var mkAutoObj=autoObj;
+            var mkSerValObj=showObj;
             new Autocomplete(mkAutoObj, function() {
-                this.setValue = function(id) {      
+                this.setValue = function(id) {
                     document.getElementById(mkSerValObj).value = id;
                 }
                 if ( this.isModified )
                     this.setValue("");
-                if ( this.value.length < 1 && this.isNotClick ) 
-                    return ;     
+                if ( this.value.length < 1 && this.isNotClick )
+                    return ;
                 return "inc/gdata.php?q="+encodeURIComponent(this.value);
-            }); 
-        }   
-        
+            });
+        }
+
         // การใช้งาน
         // make_autocom(" id ของ input ตัวที่ต้องการกำหนด "," id ของ input ตัวที่ต้องการรับค่า");
         make_autocom("show_province","h_province_id");
     </script>
 
-    
+
     </body>
 </html>
