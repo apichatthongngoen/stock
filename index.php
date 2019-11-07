@@ -1,0 +1,73 @@
+<?php
+require_once('inc/dbconnect.php');
+
+?>
+
+  
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="inc/autocomplete.js"></script>
+    <link rel="stylesheet" href="inc/autocomplete.css"  type="text/css"/>
+    <title>Hello, world!</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <h3>เบิกพัสดุ</h3>
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-auto center">
+                <form id="form1" name="form1" method="post" action="inc/fn.php"> 
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">พิมพ์ชื่อพัสดุ</span>
+                        </div>
+                    <input type="text" size="50" a class="form-control" name="show_province" id="show_province" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" >
+                    <input class="form-control" name="h_province_id" type="hidden" id="h_province_id" value="" />
+                    </div>
+                    <div class="input-group input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroup-sizing-sm">จำนวน</span>
+                        </div>
+                        <input class="form-control" type="number" id="number" name="number" placeholder="0-99" value="" />
+                    </div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary">เบิกพัสดุ</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script type="text/javascript">
+        function make_autocom(autoObj,showObj){
+            var mkAutoObj=autoObj; 
+            var mkSerValObj=showObj; 
+            new Autocomplete(mkAutoObj, function() {
+                this.setValue = function(id) {      
+                    document.getElementById(mkSerValObj).value = id;
+                }
+                if ( this.isModified )
+                    this.setValue("");
+                if ( this.value.length < 1 && this.isNotClick ) 
+                    return ;     
+                return "inc/gdata.php?q="+encodeURIComponent(this.value);
+            }); 
+        }   
+        
+        // การใช้งาน
+        // make_autocom(" id ของ input ตัวที่ต้องการกำหนด "," id ของ input ตัวที่ต้องการรับค่า");
+        make_autocom("show_province","h_province_id");
+    </script>
+
+    
+    </body>
+</html>
