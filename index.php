@@ -24,7 +24,7 @@ require_once 'inc/dbconnect.php';
 
         <div class="row justify-content-md-center">
             <div class="col-md-auto center">
-                <form id="form1" name="form1" method="post" action="">
+                <form id="form1" name="form1" method="post" action="inc/fn.php">
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="inputGroup-sizing-sm">พิมพ์ชื่อพัสดุ</span>
@@ -40,7 +40,7 @@ require_once 'inc/dbconnect.php';
                     </div>
 
                     <div class="form-group">
-                        <button type="button" class="btn btn-primary">เบิกพัสดุ</button>
+                        <button type="submit" name="btn_submit_index" id="btn_submit_index" value="1" class="btn btn-primary">เบิกพัสดุ</button>
                     </div>
 
                 </form>
