@@ -18,7 +18,7 @@ require_once 'inc/dbconnect.php';
   </head>
   <body>
     <div class="container">
-                   <div class="row justify-content-md-center">
+        <div class="row justify-content-md-center">
             <h3>เบิกพัสดุ</h3>
         </div>
 
@@ -45,6 +45,18 @@ require_once 'inc/dbconnect.php';
 
                 </form>
             </div>
+        </div>
+        <div class="row justify-content-md-center">
+            <h3>คงเหลือ <?php 
+                if (isset($_GET['product']) && $_GET['product'] != "") {
+                    $product=$_GET['product'];
+                    $sql = "SELECT * FROM products WHERE id = $product ORDER BY id DESC LIMIT 2";
+                    $qr = select($sql);
+                    $rs = $qr[0];
+                    echo $rs['sku'];
+                }
+                ?>
+            </h3>
         </div>
     </div>
     <!-- Optional JavaScript -->
