@@ -14,7 +14,7 @@ require_once 'inc/dbconnect.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script type="text/javascript" src="inc/autocomplete.js"></script>
     <link rel="stylesheet" href="inc/autocomplete.css"  type="text/css"/>
-    <title>Hello, world!</title>
+    <title>STOCK OFFICE เบิกพัสดุ </title>
   </head>
   <body>
     <div class="container">
@@ -47,13 +47,20 @@ require_once 'inc/dbconnect.php';
             </div>
         </div>
         <div class="row justify-content-md-center">
-            <h3>คงเหลือ <?php 
+            <h3> <?php 
                 if (isset($_GET['product']) && $_GET['product'] != "") {
                     $product=$_GET['product'];
                     $sql = "SELECT * FROM products WHERE id = $product ORDER BY id DESC LIMIT 2";
                     $qr = select($sql);
-                    $rs = $qr[0];
-                    echo $rs['sku'];
+                    $rs = $qr[0]; 
+                    echo "".$rs['name']."/ คงเหลือ : ".$rs['sku']." ชิ้น";
+                }
+                if (isset($_GET['error']) && $_GET['error'] != "") {
+                    if ($_GET['error']==1) {
+                        echo "เบิกเกินจำนวนที่เหลืออยู่ ";
+                        # code...
+                    }
+
                 }
                 ?>
             </h3>

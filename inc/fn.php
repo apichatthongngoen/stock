@@ -11,21 +11,24 @@ if (isset($_POST['btn_submit_index']) && $_POST['btn_submit_index'] != "") {
         "sku" => "$number",
         "date" => "$dt",
     );
-    //insert("orders_item", $data);
     $sql = "SELECT * FROM products WHERE id = $product_id ORDER BY id DESC LIMIT 2";
     $qr = select($sql);
     $rs = $qr[0];
     $number_produuct = $rs['sku'];
 
     $number_produuct_sum = $number_produuct - $number;
+
     echo $number_produuct_sum;
-    $data=array(
-        "sku"=>"$number_produuct_sum",
-        "date_time"=>"$dt",
-        );
-
-    //update("products", $data, "id=$product_id");
-
-    header( "location: ../index.php?product=$product_id" );
+    $data2 = array(
+        "sku" => "$number_produuct_sum",
+        "date_time" => "$dt",
+    );
+    if ($number_produuct_sum >= 0) {
+        //insert("orders_item", $data);
+        //update("products", $data2, "id=$product_id");
+        header("location: ../index.php?product=$product_id");
+    } else {
+        header("location: ../index.php?error=1");
+    }
 
 }
