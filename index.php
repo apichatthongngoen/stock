@@ -1,9 +1,7 @@
 <?php
 require_once 'inc/dbconnect.php';
-
+require_once 'inc/c_login.php';
 ?>
-
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -60,7 +58,6 @@ require_once 'inc/dbconnect.php';
                         echo "เบิกเกินจำนวนที่เหลืออยู่ ";
                         # code...
                     }
-
                 }
                 ?>
             </h3>
@@ -83,12 +80,9 @@ require_once 'inc/dbconnect.php';
                 return "inc/gdata.php?q="+encodeURIComponent(this.value);
             });
         }
-
         // การใช้งาน
         // make_autocom(" id ของ input ตัวที่ต้องการกำหนด "," id ของ input ตัวที่ต้องการรับค่า");
         make_autocom("show_province","h_province_id");
     </script>
-
-
     </body>
 </html>
