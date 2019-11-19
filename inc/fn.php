@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'dbconnect.php';
 
 if (isset($_POST['btn_submit_index']) && $_POST['btn_submit_index'] != "") {
@@ -15,9 +16,7 @@ if (isset($_POST['btn_submit_index']) && $_POST['btn_submit_index'] != "") {
     $qr = select($sql);
     $rs = $qr[0];
     $number_produuct = $rs['sku'];
-
     $number_produuct_sum = $number_produuct - $number;
-
     echo $number_produuct_sum;
     $data2 = array(
         "sku" => "$number_produuct_sum",
