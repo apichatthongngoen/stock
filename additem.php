@@ -1,6 +1,6 @@
 <?php
 require_once 'inc/dbconnect.php';
-//require_once 'inc/c_login.php';
+require_once 'inc/c_login.php';
 ?>
 <!doctype html>
 <html lang="en">
