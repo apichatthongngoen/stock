@@ -18,9 +18,14 @@
     $code=$_GET['code'];
 
     echo"
-    <a href=\"index.php?code=$code\" class=\"btn btn-primary btn-lg\">LOGIN</a>
-    
+    <a href=\"index.php?code=$code\" class=\"btn btn-primary btn-lg\">เบิกอะไหล่</a>
+    <br>
+    <a href=\"additem.php?code=$code\" class=\"btn btn-warning btn-lg\">ซื้ออะไหล่เข้า</a>
     ";
+
+
+
+
     echo'
 
     </div>
