@@ -30,8 +30,8 @@ if (isset($_POST['btn_submit_index']) && $_POST['btn_submit_index'] != "") {
     } else {
         header("location: ../index.php?error=1");
     }
-
 }
+
 if (isset($_POST['btn_submit_add']) && $_POST['btn_submit_add'] != "") {
     $dt = new DateTime();
     $product_id = $_POST['h_province_id'];

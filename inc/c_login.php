@@ -9,14 +9,14 @@ if (isset($_GET['code']) && $_GET['code'] != "") {
     $sql = "SELECT * FROM add_users  WHERE code = $code ORDER BY id DESC LIMIT 2";
     $qr = select2($sql, $mysqli2);
     $total = count($qr);
-    echo $total;
+    //echo $total;
     if (isset($total) && $total != 0) {
         $rs = $qr[0];
         $dt = $dt->format('Y-m-d H:i:s');
         $data = array(
             "code" => $rs['code'],
             "name" => $rs['name'],
-            "status" => 1,
+            "status" => $rs['tel'],
             "date_time" => $dt,
         );
         insert("code_login", $data);
