@@ -21,7 +21,7 @@ if (isset($_GET['code']) && $_GET['code'] != "") {
         );
         insert("code_login", $data);
         $_SESSION['name'] = $rs['code'];
-        echo $_SESSION['name'];
+        //echo $_SESSION['name'];
         delete2("add_users", "code=" . $code, $mysqli2);
         //header("Location:./index.php");
     } else {

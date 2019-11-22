@@ -19,7 +19,7 @@
 
     echo"
     <a href=\"index.php?code=$code\" class=\"btn btn-primary btn-lg\">เบิกอะไหล่</a>
-    <br>
+    <br><br>
     <a href=\"additem.php?code=$code\" class=\"btn btn-warning btn-lg\">ซื้ออะไหล่เข้า</a>
     ";
 
