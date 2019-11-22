@@ -11,6 +11,7 @@ if (isset($_POST['btn_submit_index']) && $_POST['btn_submit_index'] != "") {
         "product_id" => "$product_id",
         "sku" => "$number",
         "date" => "$dt",
+        "amount" => $_SESSION['name'],
         "rate" => "del",
     );
     $sql = "SELECT * FROM products WHERE id = $product_id ORDER BY id DESC LIMIT 2";
@@ -41,6 +42,7 @@ if (isset($_POST['btn_submit_add']) && $_POST['btn_submit_add'] != "") {
         "product_id" => "$product_id",
         "sku" => "$number",
         "date" => "$dt",
+        "amount" => $_SESSION['name'],
         "rate" => "add",
     );
     $sql = "SELECT * FROM products WHERE id = $product_id ORDER BY id DESC LIMIT 2";
