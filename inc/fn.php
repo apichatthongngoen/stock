@@ -22,6 +22,7 @@ if (isset($_POST['btn_submit_index']) && $_POST['btn_submit_index'] != "") {
     echo $number_produuct_sum;
     $data2 = array(
         "sku" => "$number_produuct_sum",
+        "name_change"=> $_SESSION['name'],
         "date_time" => "$dt",
     );
     if ($number_produuct_sum >= 0) {
@@ -53,6 +54,7 @@ if (isset($_POST['btn_submit_add']) && $_POST['btn_submit_add'] != "") {
     echo $number_produuct_sum;
     $data2 = array(
         "sku" => "$number_produuct_sum",
+        "name_change"=> $_SESSION['name'],
         "date_time" => "$dt",
     );
     if ($number_produuct_sum >= 0) {
