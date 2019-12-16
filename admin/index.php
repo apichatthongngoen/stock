@@ -1,4 +1,7 @@
-
+<?php
+require_once '../inc/dbconnect.php';
+$mysqli = connect();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -243,8 +246,8 @@
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
     <?php
-    require_once('int/MAINSIDEBARMENU.php');
-    ?>
+require_once 'int/MAINSIDEBARMENU.php';
+?>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -260,7 +263,7 @@
               <table cellpadding="0" cellspacing="0" border="0" class="display table table-bordered" id="hidden-table-info">
                 <thead>
                   <tr>
-                    <th>Rendering engine</th>
+                    <th>ลำดับ</th>
                     <th>Browser</th>
                     <th class="hidden-phone">Platform(s)</th>
                     <th class="hidden-phone">Engine version</th>
@@ -269,6 +272,39 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <?php
+
+$sql = "SELECT * FROM products ";
+$qr = select($sql);
+$total = count($qr);
+$i = 0;
+while ($i < count($qr)) {
+    $rs = $qr[$i];
+    $i++;
+    echo'<tr class="gradeA">';
+    echo"<td>$i</td>";
+    echo"<td>$i</td>";
+    echo"<td>$i</td>";
+    echo"<td>$i</td>";
+    echo"<td>$i</td>";
+
+
+
+
+
+    echo'</tr>';
+
+
+
+
+
+
+
+
+
+
+}
+?>
                   <tr class="gradeX">
                     <td>Trident</td>
                     <td>Internet Explorer 4.0</td>
@@ -276,7 +312,7 @@
                     <td class="center hidden-phone">4</td>
                     <td class="center hidden-phone">X</td>
                     <td class="center hidden-phone">789</td>
-                    
+
 
                   </tr>
                   <tr class="gradeC">
@@ -299,7 +335,7 @@
     </section>
     <!-- /MAIN CONTENT -->
     <!--main content end-->
-    <!--footer start--> 
+    <!--footer start-->
     <footer class="site-footer">
       <div class="text-center">
         <p>
