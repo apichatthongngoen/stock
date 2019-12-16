@@ -1,5 +1,5 @@
 <?php
-include "inc/fn.php";
-$mysqli = connect();
-listfield("products");
+$dt = new DateTime();
+$dt = $dt->format('YmdHis');
 
+echo $dt;
