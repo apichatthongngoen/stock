@@ -1,6 +1,12 @@
 <?php
 require_once 'inc/dbconnect.php';
 require_once 'inc/c_login.php';
+
+if (isset($_GET['code']) && $_GET['code'] != "") {
+    $code = $_GET['code'];
+    c_login("0", $code);
+}
+checkpage(0);
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,19 +18,19 @@ require_once 'inc/c_login.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script type="text/javascript" src="inc/autocomplete.js"></script>
     <link rel="stylesheet" href="inc/autocomplete.css"  type="text/css"/>
-    <title>STOCK OFFICE เบิกพัสดุ </title>
+    <title>STOCK OFFICE ระบบเบิกพัสดุ </title>
   </head>
-  <body>
+  <body style="background-color: skyblue">
     <div class="container">
         <div class="row justify-content-md-center">
-            <h3>เบิกพัสดุ</h3>
+            <h3>ยินดีต้อนรับ <?php echo $_SESSION['name_login']; ?> เข้าสู่ระบบเบิกพัสดุ</h3>
         </div>
-
         <div class="row justify-content-md-center">
             <div class="col-md-auto center">
                 <form id="form1" name="form1" method="post" action="inc/fn.php">
                     <div class="input-group input-group-sm mb-3">
                         <div class="input-group-prepend">
+
                             <span class="input-group-text" id="inputGroup-sizing-sm">พิมพ์ชื่อพัสดุ</span>
                         </div>
                     <input type="text" size="50" class="form-control" name="show_province" id="show_province" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
@@ -45,21 +51,21 @@ require_once 'inc/c_login.php';
             </div>
         </div>
         <div class="row justify-content-md-center">
-            <h3> <?php 
-                if (isset($_GET['product']) && $_GET['product'] != "") {
-                    $product=$_GET['product'];
-                    $sql = "SELECT * FROM products WHERE id = $product ORDER BY id DESC LIMIT 2";
-                    $qr = select($sql);
-                    $rs = $qr[0]; 
-                    echo "".$rs['name']."/ คงเหลือ : ".$rs['sku']." ชิ้น";
-                }
-                if (isset($_GET['error']) && $_GET['error'] != "") {
-                    if ($_GET['error']==1) {
-                        echo "เบิกเกินจำนวนที่เหลืออยู่ ";
-                        # code...
-                    }
-                }
-                ?>
+            <h3> <?php
+if (isset($_GET['product']) && $_GET['product'] != "") {
+    $product = $_GET['product'];
+    $sql = "SELECT * FROM products WHERE id = $product ORDER BY id DESC LIMIT 2";
+    $qr = select($sql);
+    $rs = $qr[0];
+    echo "" . $rs['name'] . "/ คงเหลือ : " . $rs['sku'] . " ชิ้น";
+}
+if (isset($_GET['error']) && $_GET['error'] != "") {
+    if ($_GET['error'] == 1) {
+        echo "เบิกเกินจำนวนที่เหลืออยู่ ";
+        # code...
+    }
+}
+?>
             </h3>
         </div>
     </div>

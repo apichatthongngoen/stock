@@ -1,6 +1,11 @@
 <?php
 require_once 'inc/dbconnect.php';
 require_once 'inc/c_login.php';
+if (isset($_GET['code']) && $_GET['code'] != "") {
+    $code=$_GET['code'];
+    c_login("1",$code);
+}
+checkpage(1);
 ?>
 <!doctype html>
 <html lang="en">
@@ -12,12 +17,12 @@ require_once 'inc/c_login.php';
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script type="text/javascript" src="inc/autocomplete.js"></script>
     <link rel="stylesheet" href="inc/autocomplete.css"  type="text/css"/>
-    <title>STOCK OFFICE เบิกพัสดุ </title>
+    <title>STOCK OFFICE ระบบซื้อพัสดุเข้า </title>
   </head>
-  <body>
+  <body style="background-color: yellow">
     <div class="container">
         <div class="row justify-content-md-center">
-            <h3>ซื้อพัสดุเข้า</h3>
+            <h3>ยินดีต้อนรับ <?php echo $_SESSION['name_login']; ?> เข้าสู่ระบบซื้อพัสดุเข้า</h3>
         </div>
 
         <div class="row justify-content-md-center">
