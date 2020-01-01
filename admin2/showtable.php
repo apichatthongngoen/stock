@@ -16,7 +16,7 @@ function TB_s()
         echo '<td >' . $rs['name'] . '</td>';
         echo '<td class="center">' . $rs['sku'] . '</td>';
         echo '<td class="center">' . $rs['qty'] . '</td>';
-        echo '<td class="center">' . $rs['date_time'].'/'. '</td>';
+        echo '<td class="center">' . $rs['date_time'] . '/' . '</td>';
         echo '<td class="center">' . $i . '</td>';
         echo '<td> <div class="hidden-sm hidden-xs action-buttons">
         <a class="blue" href="#">
@@ -70,4 +70,90 @@ function TB_s()
 
     }
 
+}
+
+function TB_s2()
+{
+    global $objcon;
+    $qut1 = "SELECT  p.*,c.name as Cname FROM products2 p LEFT JOIN code_login c ON p.code=c.code ";
+    $consulta = $objcon->prepare($qut1);
+    $consulta->execute();
+    while ($fila = $consulta->fetchAll()) {echo '<pre>';
+
+
+        $i = 0;
+        
+        foreach ($fila as $row) {
+        $i++;
+        echo '<tr>';
+        echo '<td class="center">' . $i . '</td>';
+        echo '<td >' . $row["name"] . '</td>';
+        echo '<td class="center">' . $row["sku"] . '</td>';
+        echo '<td class="center">' . $row["qty"] . '</td>';
+        echo '<td class="center">' . $row["date_time"] . '</td>';
+        echo '<td class="center">' . $row["Cname"] . '</td>';
+        echo '<td> <div class="hidden-sm hidden-xs action-buttons">
+        <a class="blue" href="#">
+        <i class="ace-icon fa fa-search-plus bigger-130"></i>
+        </a>
+        
+        <a class="green" href="#">
+        <i class="ace-icon fa fa-pencil bigger-130"></i>
+        </a>
+        
+        <a class="red" href="#">
+        <i class="ace-icon fa fa-trash-o bigger-130"></i>
+        </a>
+        </div>
+        
+        <div class="hidden-md hidden-lg">
+        <div class="inline pos-rel">
+        <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+        <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+        </button>
+        
+        <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+        <li>
+        <a href="#" class="tooltip-info" data-rel="tooltip" title="View">
+        <span class="blue">
+        <i class="ace-icon fa fa-search-plus bigger-120"></i>
+        </span>
+        </a>
+        </li>
+        
+        <li>
+        <a href="#" class="tooltip-success" data-rel="tooltip" title="Edit">
+        <span class="green">
+        <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+        </span>
+        </a>
+        </li>
+        
+        <li>
+        <a href="#" class="tooltip-error" data-rel="tooltip" title="Delete">
+        <span class="red">
+        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+        </span>
+        </a>
+        </li>
+        </ul>
+        </div>
+        </div>
+        </td>';
+        echo '</tr>';
+        }
+         
+
+
+
+
+
+
+
+
+
+
+
+    }
+   
 }

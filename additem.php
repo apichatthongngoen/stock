@@ -53,7 +53,7 @@ checkpage(1);
             <h3> <?php 
                 if (isset($_GET['product']) && $_GET['product'] != "") {
                     $product=$_GET['product'];
-                    $sql = "SELECT * FROM products WHERE id = $product ORDER BY id DESC LIMIT 2";
+                    $sql = "SELECT * FROM products2 WHERE id = $product ORDER BY id DESC LIMIT 2";
                     $qr = select($sql);
                     $rs = $qr[0]; 
                     echo "".$rs['name']."/ คงเหลือ : ".$rs['sku']." ชิ้น";

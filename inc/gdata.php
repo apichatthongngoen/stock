@@ -12,7 +12,7 @@ if (isset($_GET['q']) && $_GET['q'] != "") {
     $q = urldecode($_GET["q"]);
     $q = $mysqli->real_escape_string($q);
     $pagesize = 50; // จำนวนรายการที่ต้องการแสดง
-    $table_db = "products"; // ตารางที่ต้องการค้นหา
+    $table_db = "products2"; // ตารางที่ต้องการค้นหา
     $find_field = "name"; // ฟิลที่ต้องการค้นหา
     $sql = "
     SELECT
