@@ -30,7 +30,6 @@ if (isset($_GET['q']) && $_GET['q'] != "") {
             $name = trim($row["name"] . ">>คงเหลือ(" . $row["sku"] . ")"); // ตัดช่องวางหน้าหลัง
             $name = addslashes($name); // ป้องกันรายการที่ ' ไม่ให้แสดง error
             $name = htmlspecialchars($name); // ป้องกันอักขระพิเศษ
-
             // กำหนดรูปแบบข้อความที่แใดงใน li ลิสรายการตัวเลือก
             $display_name = preg_replace("/(" . $q . ")/i", "<b>$1</b>", $name);
             echo "

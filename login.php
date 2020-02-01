@@ -25,10 +25,6 @@
     <a href=\"admin/index.php?code=$code\" class=\"btn btn-info btn-lg\">ADMIN</a>
     
     ";
-
-
-
-
     echo'
 
     </div>

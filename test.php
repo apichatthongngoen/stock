@@ -24,7 +24,12 @@ $query= "SELECT
         FROM products ad
         LEFT JOIN code_login ba ON ad.name_change = ba.code ";
 
-$qut1="SELECT  p.*,c.name as Cname FROM products2 p LEFT JOIN code_login c ON p.code=c.code ";
+$qut1="SELECT  o.*,p.name as pname ,c.name as cname
+FROM orders_item o 
+LEFT JOIN products2 p  ON o.product_id=p.id 
+LEFT JOIN code_login c  ON o.amount=c.code
+WHERE  o.rate = 'del'
+ORDER BY o.date DESC";
 
 //$consulta = $objcon->query($query);
 //$consulta=$conexion->query($query);
@@ -33,9 +38,9 @@ $qut1="SELECT  p.*,c.name as Cname FROM products2 p LEFT JOIN code_login c ON p.
 try {
     while ($fila=$consulta->fetchAll())
 {   echo'<pre>';
-    //print_r($fila);
+    print_r($fila);
     foreach ($fila as $row) {
-        echo $row['id'];
+        //echo $row['id'];
 
     }
     echo'</pre>';

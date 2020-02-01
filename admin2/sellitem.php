@@ -1,16 +1,12 @@
 <?php
 require_once 'showtable.php';
 require_once 'menu.php';
-
 ?>
-
-				<?php menu1("00");  menu("index"); ?>
-
+				<?php menu1("00"); menu("เบิก");?>
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 				</div>
 			</div>
-
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -35,7 +31,6 @@ require_once 'menu.php';
 							</form>
 						</div><!-- /.nav-search -->
 					</div>
-
 					<div class="page-content">
 						<div class="ace-settings-container" id="ace-settings-container">
 							<div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
@@ -119,17 +114,26 @@ require_once 'menu.php';
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="row">
 									<div class="col-xs-12">
-	
+
 										<div class="clearfix">
 											<div class="pull-right tableTools-container"></div>
+											<a href="?page=del" class="btn btn-app btn-success">
+												เบิกของ
+											</a>
+											<a href="?page=add" class="btn btn-app btn-primary no-radius">
+												ซื้อของ
+											</a>
 										</div>
 										<div class="table-header">
-											Results for "Latest Registered Domains"
-										</div>
+											
+											<?php
+if (isset($_GET['page']) && $_GET['page'] != "") {if ($_GET['page'] == "del") {echo 'รายการเบิกของล่าสุด';} else if ($_GET['page'] == "add") {echo 'รายการซื้อของล่าสุด';}} else {echo 'รายการซื้อของล่าสุด';}
+											?>
 
+										</div>
 										<!-- div.table-responsive -->
 
-										<!-- div.dataTables_borderWrap -->
+										<!-- div.dataTables_borderWrap --> 
 										<div>
 											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
 												<thead>
@@ -138,30 +142,28 @@ require_once 'menu.php';
 															ลำดับ
 														</th>
 														<th>รายการ</th>
-														<th>จำนวนคงเหลือ</th>
-														<th class="hidden-480">ประเภท</th>
+														<th>จำนวนที่เบิก</th>
+														<th class="hidden-480">ผู้เบิก/ซื้อ</th>
 
 														<th>
 															<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-															Update
+															วันที่
 														</th>
-														<th class="hidden-480">Update By </th>
+														<th class="hidden-480"> </th>
 
 														<th></th>
 													</tr>
 												</thead>
 												<tbody>
-                                                    <?php
-                                                    TB_s2();
-                                                    ?>
-                                                    
+													<?php
+if (isset($_GET['page']) && $_GET['page'] != "") {if ($_GET['page'] == "del") {TB_del();} else if ($_GET['page'] == "add") {TB_add();}} else {TB_add();}
+?>
+
 												</tbody>
 											</table>
 										</div>
 									</div>
 								</div>
-
-
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -233,7 +235,7 @@ require_once 'menu.php';
 		<script type="text/javascript">
 			jQuery(function($) {
 				//initiate dataTables plugin
-				var myTable = 
+				var myTable =
 				$('#dynamic-table')
 				//.wrap("<div class='dataTables_borderWrap' />")   //if you are applying horizontal scrolling (sScrollX)
 				.DataTable( {
@@ -244,34 +246,34 @@ require_once 'menu.php';
 					  { "bSortable": false }
 					],
 					"aaSorting": [],
-					
-					
+
+
 					//"bProcessing": true,
 			        //"bServerSide": true,
 			        //"sAjaxSource": "http://127.0.0.1/table.php"	,
-			
+
 					//,
 					//"sScrollY": "200px",
 					//"bPaginate": false,
-			
+
 					//"sScrollX": "100%",
 					//"sScrollXInner": "120%",
 					//"bScrollCollapse": true,
 					//Note: if you are applying horizontal scrolling (sScrollX) on a ".table-bordered"
 					//you may want to wrap the table inside a "div.dataTables_borderWrap" element
-			
+
 					//"iDisplayLength": 50
-			
-			
+
+
 					select: {
 						style: 'multi'
 					}
 			    } );
-			
-				
-				
+
+
+
 				$.fn.dataTable.Buttons.defaults.dom.container.className = 'dt-buttons btn-overlap btn-group btn-overlap';
-				
+
 				new $.fn.dataTable.Buttons( myTable, {
 					buttons: [
 					  {
@@ -306,25 +308,25 @@ require_once 'menu.php';
 						"className": "btn btn-white btn-primary btn-bold",
 						autoPrint: false,
 						message: 'This print was produced using the Print button for DataTables'
-					  }		  
+					  }
 					]
 				} );
 				myTable.buttons().container().appendTo( $('.tableTools-container') );
-				
+
 				//style the message box
 				var defaultCopyAction = myTable.button(1).action();
 				myTable.button(1).action(function (e, dt, button, config) {
 					defaultCopyAction(e, dt, button, config);
 					$('.dt-button-info').addClass('gritter-item-wrapper gritter-info gritter-center white');
 				});
-				
-				
+
+
 				var defaultColvisAction = myTable.button(0).action();
 				myTable.button(0).action(function (e, dt, button, config) {
-					
+
 					defaultColvisAction(e, dt, button, config);
-					
-					
+
+
 					if($('.dt-button-collection > .dropdown-menu').length == 0) {
 						$('.dt-button-collection')
 						.wrapInner('<ul class="dropdown-menu dropdown-light dropdown-caret dropdown-caret" />')
@@ -332,9 +334,9 @@ require_once 'menu.php';
 					}
 					$('.dt-button-collection').appendTo('.tableTools-container .dt-buttons')
 				});
-			
+
 				////
-			
+
 				setTimeout(function() {
 					$($('.tableTools-container')).find('a.dt-button').each(function() {
 						var div = $(this).find(' > div').first();
@@ -342,11 +344,11 @@ require_once 'menu.php';
 						else $(this).tooltip({container: 'body', title: $(this).text()});
 					});
 				}, 500);
-				
-				
-				
-				
-				
+
+
+
+
+
 				myTable.on( 'select', function ( e, dt, type, index ) {
 					if ( type === 'row' ) {
 						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', true);
@@ -357,55 +359,55 @@ require_once 'menu.php';
 						$( myTable.row( index ).node() ).find('input:checkbox').prop('checked', false);
 					}
 				} );
-			
-			
-			
-			
+
+
+
+
 				/////////////////////////////////
 				//table checkboxes
 				$('th input[type=checkbox], td input[type=checkbox]').prop('checked', false);
-				
+
 				//select/deselect all rows according to table header checkbox
 				$('#dynamic-table > thead > tr > th input[type=checkbox], #dynamic-table_wrapper input[type=checkbox]').eq(0).on('click', function(){
 					var th_checked = this.checked;//checkbox inside "TH" table header
-					
+
 					$('#dynamic-table').find('tbody > tr').each(function(){
 						var row = this;
 						if(th_checked) myTable.row(row).select();
 						else  myTable.row(row).deselect();
 					});
 				});
-				
+
 				//select/deselect a row when the checkbox is checked/unchecked
 				$('#dynamic-table').on('click', 'td input[type=checkbox]' , function(){
 					var row = $(this).closest('tr').get(0);
 					if(this.checked) myTable.row(row).deselect();
 					else myTable.row(row).select();
 				});
-			
-			
-			
+
+
+
 				$(document).on('click', '#dynamic-table .dropdown-toggle', function(e) {
 					e.stopImmediatePropagation();
 					e.stopPropagation();
 					e.preventDefault();
 				});
-				
-				
-				
+
+
+
 				//And for the first simple table, which doesn't have TableTools or dataTables
 				//select/deselect all rows according to table header checkbox
 				var active_class = 'active';
 				$('#simple-table > thead > tr > th input[type=checkbox]').eq(0).on('click', function(){
 					var th_checked = this.checked;//checkbox inside "TH" table header
-					
+
 					$(this).closest('table').find('tbody > tr').each(function(){
 						var row = this;
 						if(th_checked) $(row).addClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', true);
 						else $(row).removeClass(active_class).find('input[type=checkbox]').eq(0).prop('checked', false);
 					});
 				});
-				
+
 				//select/deselect a row when the checkbox is checked/unchecked
 				$('#simple-table').on('click', 'td input[type=checkbox]' , function(){
 					var $row = $(this).closest('tr');
@@ -413,30 +415,30 @@ require_once 'menu.php';
 					if(this.checked) $row.addClass(active_class);
 					else $row.removeClass(active_class);
 				});
-			
-				
-			
+
+
+
 				/********************************/
 				//add tooltip for small view action buttons in dropdown menu
 				$('[data-rel="tooltip"]').tooltip({placement: tooltip_placement});
-				
+
 				//tooltip placement on right or left
 				function tooltip_placement(context, source) {
 					var $source = $(source);
 					var $parent = $source.closest('table')
 					var off1 = $parent.offset();
 					var w1 = $parent.width();
-			
+
 					var off2 = $source.offset();
 					//var w2 = $source.width();
-			
+
 					if( parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2) ) return 'right';
 					return 'left';
 				}
-				
-				
-				
-				
+
+
+
+
 				/***************/
 				$('.show-details-btn').on('click', function(e) {
 					e.preventDefault();
@@ -444,11 +446,11 @@ require_once 'menu.php';
 					$(this).find(ace.vars['.icon']).toggleClass('fa-angle-double-down').toggleClass('fa-angle-double-up');
 				});
 				/***************/
-				
-				
-				
-				
-				
+
+
+
+
+
 				/**
 				//add horizontal scrollbars to a simple table
 				$('#simple-table').css({'width':'2000px', 'max-width': 'none'}).wrap('<div style="width: 1000px;" />').parent().ace_scroll(
@@ -460,8 +462,8 @@ require_once 'menu.php';
 				  }
 				).css('padding-top', '12px');
 				*/
-			
-			
+
+
 			})
 		</script>
 	</body>
