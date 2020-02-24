@@ -3,13 +3,13 @@ require_once 'inc/dbconnect.php';
 require_once 'inc/c_login.php';
 
 if (isset($_GET['code']) && $_GET['code'] != "") {
-    $code = $_GET['code'];
+    $code = renamesql($_GET['code']);
     c_login("0", $code);
 }
 checkpage(0);
 ?>
 <!doctype html>
-<html lang="en">
+<html lang="en"> 
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -53,8 +53,8 @@ checkpage(0);
         <div class="row justify-content-md-center">
             <h3> <?php
 if (isset($_GET['product']) && $_GET['product'] != "") {
-    $product = $_GET['product'];
-    $sql = "SELECT * FROM products2 WHERE id = $product ORDER BY id DESC LIMIT 2";
+    $product = renamesql($_GET['product']);
+    $sql = "SELECT * FROM products2 WHERE id = '$product' ORDER BY id DESC LIMIT 2";
     $qr = select($sql);
     $rs = $qr[0];
     echo "" . $rs['name'] . "/ คงเหลือ : " . $rs['sku'] . " ชิ้น";

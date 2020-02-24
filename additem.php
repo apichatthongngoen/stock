@@ -2,7 +2,7 @@
 require_once 'inc/dbconnect.php';
 require_once 'inc/c_login.php';
 if (isset($_GET['code']) && $_GET['code'] != "") {
-    $code=$_GET['code'];
+    $code=renamesql($_GET['code']);
     c_login("1",$code);
 }
 checkpage(1);
@@ -52,7 +52,7 @@ checkpage(1);
         <div class="row justify-content-md-center">
             <h3> <?php 
                 if (isset($_GET['product']) && $_GET['product'] != "") {
-                    $product=$_GET['product'];
+                    $product = renamesql($_GET['product']);
                     $sql = "SELECT * FROM products2 WHERE id = $product ORDER BY id DESC LIMIT 2";
                     $qr = select($sql);
                     $rs = $qr[0]; 

@@ -9,7 +9,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 require_once 'dbconnect.php';
 
 if (isset($_GET['q']) && $_GET['q'] != "") {
-    $q = urldecode($_GET["q"]);
+    $q = urldecode(urldecode($_GET["q"]));
     $q = $mysqli->real_escape_string($q);
     $pagesize = 50; // จำนวนรายการที่ต้องการแสดง
     $table_db = "products2"; // ตารางที่ต้องการค้นหา

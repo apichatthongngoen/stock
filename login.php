@@ -15,7 +15,22 @@
 
 <br>
     <?php
-    $code=$_GET['code'];
+    function renamesql($uname) {
+      preg_match_all('/./u',$uname,$arr_char);
+      $str=strlen($uname);
+      $ecc='';
+      for($i=0;$i<=$str;$i++)
+        {
+          if(preg_match("/^[0-9a-zA-Zก-๙]{1}/",$arr_char[0][$i])){
+               $ecc=$ecc.$arr_char[0][$i];
+            }
+        }
+      if($uname!=$ecc){
+        $ecc=FALSE;
+      }
+        return $ecc;
+    }
+    $code=renamesql($_GET['code']);
 
     echo"
     <a href=\"index.php?code=$code\" class=\"btn btn-primary btn-lg\">เบิกอะไหล่</a>
