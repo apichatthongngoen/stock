@@ -14,7 +14,7 @@ if (isset($_POST['btn_submit_index']) && $_POST['btn_submit_index'] != "") {
         "amount" => $_SESSION['name'],
         "rate" => "del",
     );
-    $sql = "SELECT * FROM products2 WHERE id = $product_id ORDER BY id DESC LIMIT 2";
+    $sql = "SELECT * FROM products2 WHERE id = '$product_id' ORDER BY id DESC LIMIT 2";
     $qr = select($sql);
     $rs = $qr[0];
     $number_produuct = $rs['sku'];
